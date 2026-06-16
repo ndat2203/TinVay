@@ -20,9 +20,6 @@ COPY . .
 # Cài dependencies Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# Generate key (có thể bỏ nếu dùng env)
-RUN php artisan key:generate
-
 # Mở port Render
 EXPOSE 10000
 
