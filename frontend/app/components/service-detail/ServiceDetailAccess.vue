@@ -10,7 +10,7 @@
         <li 
          v-for="(value, index) in service?.data?.service?.guide_content"
          :key="index"
-         class="text-[18px] leading-[27px] font-medium text-[#2F3F55]">
+         class="break-words text-[18px] leading-[27px] font-medium text-[#2F3F55]">
           {{ value }}
         </li>
       </ul>
