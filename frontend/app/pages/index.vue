@@ -12,9 +12,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
-
 const loanSteps = [
   {
     id: 1,
@@ -91,37 +88,40 @@ const sectionInfo = {
 }
 
 // const services = ref([])
-const newsPosts = ref([])
-const noticePosts = ref([])
+// const newsPosts = ref([])
+// const noticePosts = ref([])
 const loading = ref(false)
 
 const {
   data: services,
-  pending,
   error
-} = await useFetch(
-  'http://127.0.0.1:8000/api/admin/service',
-  {
-    transform: (res) => res.data || res
+} = await useApiFetch('/admin/service', {
+  transform: (res) => res.data || res
+})
+
+const {
+  data: postsData,
+  pending,
+} = await useAsyncData('home-posts', async () => {
+  const [newsRes, noticeRes] = await Promise.all([
+    useApiFetch('/post/category/bai-viet'),
+    useApiFetch('/post/category/thong-bao'),
+  ])
+
+  return {
+    newsPosts: newsRes.data.value?.data || [],
+    noticePosts: noticeRes.data.value?.data || [],
   }
+})
+
+const newsPosts = computed(
+  () => postsData.value?.newsPosts ?? []
 )
 
-const fetchPosts = async () => {
-  try {
-    loading.value = true
-    const [newsRes, noticeRes] = await Promise.all([
-      axios.get('http://127.0.0.1:8000/api/post/category/bai-viet'),
-      axios.get('http://127.0.0.1:8000/api/post/category/thong-bao'),
-    ])
+const noticePosts = computed(
+  () => postsData.value?.noticePosts ?? []
+)
 
-    newsPosts.value = newsRes.data.data || []
-    noticePosts.value = noticeRes.data.data || []
-  } catch (error) {
-    console.error('Lỗi lấy bài viết:', error)
-  } finally{
-    loading.value = false
-  }
-}
 
 const personalLoan = computed(() =>
    (services.value ?? []).find(item => item.slug === 'vay-ca-nhan')
@@ -138,12 +138,6 @@ const concernLoan = computed(() =>
 const allPartners = computed(() =>
   (services.value ?? []).flatMap(service => service.children ?? [])
 )
-
-onMounted(() => {
-  // fetchService()
-  fetchPosts()
-})
-
 
 
 </script>

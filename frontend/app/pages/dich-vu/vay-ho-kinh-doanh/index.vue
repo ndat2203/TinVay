@@ -12,9 +12,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
-
 const bannerData = {
   subtitle: 'Dịch vụ tin vay biz',
   title: 'Vay hộ kinh doanh',
@@ -97,6 +94,7 @@ const loanSteps = [
     column: 'right',
   },
 ]
+
 const successData = {
   count: '5000',
   title: 'Hộ kinh doanh vay vốn thành công',
@@ -121,32 +119,19 @@ const successData = {
     }
   ]
 }
-const loading = ref(false)
-const service = ref([])
 
-const getServiceDetail = async () => {
-  try {
-    loading.value = true
+const {
+  data: service,
+  pending: loading,
+  error
+} = await useApiFetch('/admin/service', {
+  transform: (res) => res.data || []
+})
 
-    const response = await axios.get(
-      'http://localhost:8000/api/admin/service'
-    )
-
-    service.value = response.data.data
-  } catch (error) {
-    console.error(error)
-  } finally {
-    loading.value = false
-  }
-}
 const businessLoan = computed(() =>
   service.value.find(item => item.slug === 'vay-ho-kinh-doanh')
 )
 
-
-onMounted(() => {
-  getServiceDetail()
-})
 </script>
 
 <style lang="scss" scoped>

@@ -84,28 +84,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
-
-const noticePosts = ref([])
-const loading = ref(false)
-const fetchPosts = async () => {
-  try {
-    loading.value = true
-    const res = await axios.get('http://127.0.0.1:8000/api/post/category/thong-bao')
-
-    noticePosts.value = res.data.data || res.data
-  } catch (error) {
-    console.error(error)
-  }finally{
-    loading.value = false
-  }
-}
-
-
-onMounted(() => {
-  fetchPosts()
+const {
+  data: noticePosts,
+  pending: loading,
+  error
+} = await useApiFetch('/post/category/thong-bao', {
+  transform: (res) => res.data || res
 })
+
+
 </script>
 
 <style lang="css" scoped>

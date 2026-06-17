@@ -22,18 +22,18 @@ const {
   data: serviceDetail,
   pending: loading,
   error
-} = await useFetch(
-  `http://127.0.0.1:8000/api/service/detail/${categorySlug}/${serviceSlug}`
+} = await useApiFetch(
+  `/service/detail/${categorySlug}/${serviceSlug}`
 )
-console.log(serviceDetail.value)
+
 const serviceTitle = computed(
   () => serviceDetail.value?.data?.service?.title
 )
 
-const{
-    data: postService
-} = await useFetch(
-    `http://127.0.0.1:8000/api/post/service/${serviceSlug}/posts`
+const {
+  data: postService
+} = await useApiFetch(
+  `/post/service/${serviceSlug}/posts`
 )
 
 </script>

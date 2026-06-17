@@ -8,19 +8,24 @@ const { data, pending, error } = await useAsyncData(
   'home-posts',
   async () => {
     const [newsRes, noticeRes] = await Promise.all([
-      $fetch('http://127.0.0.1:8000/api/post/category/bai-viet'),
-      $fetch('http://127.0.0.1:8000/api/post/category/thong-bao')
+      useApiFetch('/post/category/bai-viet'),
+      useApiFetch('/post/category/thong-bao'),
     ])
 
     return {
-      newsPosts: newsRes.data || [],
-      noticePosts: noticeRes.data || []
+      newsPosts: newsRes.data.value?.data || [],
+      noticePosts: noticeRes.data.value?.data || [],
     }
   }
 )
 
-const newsPosts = computed(() => data.value?.newsPosts || [])
-const noticePosts = computed(() => data.value?.noticePosts || [])
+const newsPosts = computed(
+  () => data.value?.newsPosts ?? []
+)
+
+const noticePosts = computed(
+  () => data.value?.noticePosts ?? []
+)
 </script>
 
 <style lang="scss" scoped>

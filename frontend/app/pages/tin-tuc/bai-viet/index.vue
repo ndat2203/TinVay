@@ -87,11 +87,10 @@
 <script setup>
 const {
   data: newsPosts,
-  loading,
   pending,
   error
-} = await useFetch(
-  'http://127.0.0.1:8000/api/post/category/bai-viet',
+} = await useApiFetch(
+  '/post/category/bai-viet',
   {
     transform: (res) => res.data || res
   }

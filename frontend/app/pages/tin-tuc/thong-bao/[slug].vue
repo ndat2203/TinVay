@@ -3,26 +3,17 @@ const route = useRoute()
 
 const slug = route.params.slug
 
-const {
-  data: post,
-  pending,
-  error
-} = await useFetch(
-  `http://127.0.0.1:8000/api/post/detail/${slug}`,
-  {
+const [
+  { data: post, pending: postLoading, error },
+  { data: newsPosts, pending: newsLoading }
+] = await Promise.all([
+  useApiFetch(`/post/detail/${slug}`, {
     transform: (res) => res.data || res
-  }
-)
-
-const {
-  data: newsPosts,
-  loading,
-} = await useFetch(
-  `http://127.0.0.1:8000/api/post/category/thong-bao`,
-  {
+  }),
+  useApiFetch('/post/category/thong-bao', {
     transform: (res) => res.data || res
-  }
-)
+  })
+])
 
 </script>
 
