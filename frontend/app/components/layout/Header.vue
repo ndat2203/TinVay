@@ -3,41 +3,28 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const categories = ref([])
-
-const serviceCategories = ref([])
-const postCategories = ref([])
-
 const isMenuOpen = ref(false)
 const openService = ref(false)
 const openNews = ref(false)
 
-const fetchCategories = async () => {
-  try {
-    const res = await axios.get('http://127.0.0.1:8000/api/categories')
+const {
+  data: categories,
+  error
+} = await useApiFetch('/categories', {
+  transform: (res) => res.data || []
+})
 
-    categories.value = res.data.data || res.data
+const serviceCategories = computed(() =>
+  (categories.value ?? []).filter(
+    item => item.type === 'service'
+  )
+)
 
-    serviceCategories.value = categories.value.filter(
-      item => item.type === 'service'
-    )
-
-    postCategories.value = categories.value.filter(
-      item => item.type === 'post'
-    )
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const toggleService = () => {
-  openService.value = !openService.value
-
-  if (openService.value) {
-    openNews.value = false
-  }
-}
-
+const postCategories = computed(() =>
+  (categories.value ?? []).filter(
+    item => item.type === 'post'
+  )
+)
 const toggleNews = () => {
   openNews.value = !openNews.value
 
@@ -46,9 +33,6 @@ const toggleNews = () => {
   }
 }
 
-onMounted(() => {
-  fetchCategories()
-})
 </script>
 
 <template>
