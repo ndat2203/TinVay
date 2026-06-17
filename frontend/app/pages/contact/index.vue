@@ -39,7 +39,7 @@
           alt="Email"
         />
 
-        <div>
+        <div class="flex flex-col items-start gap-1">
           <h3
             class="text-left lg:text-center text-[28px] font-bold leading-9 text-[rgb(88,89,91)]"
           >
@@ -47,7 +47,7 @@
           </h3>
 
           <p
-            class="whitespace-pre-line break-words text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
+            class=" break-all text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
           >
             tinvay@vietcredit.com.vn
           </p>
@@ -69,7 +69,7 @@
           alt="Hotline"
         />
 
-        <div>
+        <div class="flex flex-col items-start gap-1">
           <h3
             class="text-left lg:text-center text-[28px] font-bold leading-9 text-[rgb(88,89,91)]"
           >
@@ -77,7 +77,7 @@
           </h3>
 
           <p
-            class="whitespace-pre-line break-words text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
+            class="whitespace-pre-line break-all text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
           >
             1900 638 996 (1000đ/phút)
           </p>
@@ -99,7 +99,7 @@
           alt="Facebook"
         />
 
-        <div>
+        <div class="flex flex-col items-start gap-1">
           <h3
             class="text-left lg:text-center text-[28px] font-bold leading-9 text-[rgb(88,89,91)]"
           >
@@ -107,7 +107,7 @@
           </h3>
 
           <p
-            class="whitespace-pre-line break-words text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
+            class="whitespace-pre-line break-all text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
           >
             fb/tinvayofficial
           </p>
@@ -129,7 +129,7 @@
           alt="Zalo"
         />
 
-        <div>
+        <div class="flex flex-col items-start gap-1">
           <h3
             class="text-left lg:text-center text-[28px] font-bold leading-9 text-[rgb(88,89,91)]"
           >
@@ -137,7 +137,7 @@
           </h3>
 
           <p
-            class="whitespace-pre-line break-words text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
+            class="whitespace-pre-line break-all text-left lg:text-center text-[18px] font-medium leading-[27px] text-[rgb(89,101,119)]"
           >
             TINVAY
           </p>
