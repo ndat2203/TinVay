@@ -6,6 +6,7 @@ import axios from 'axios'
 const isMenuOpen = ref(false)
 const openService = ref(false)
 const openNews = ref(false)
+const route = useRoute()
 
 const {
   data: categories,
@@ -13,7 +14,7 @@ const {
 } = await useApiFetch('/categories', {
   transform: (res) => res.data || []
 })
-
+console.log(categories.value)
 const serviceCategories = computed(() =>
   (categories.value ?? []).filter(
     item => item.type === 'service'
@@ -25,6 +26,14 @@ const postCategories = computed(() =>
     item => item.type === 'post'
   )
 )
+const toggleService = () => {
+  openService.value = !openService.value
+
+  if (openService.value) {
+    openNews.value = false
+  }
+}
+
 const toggleNews = () => {
   openNews.value = !openNews.value
 
@@ -33,6 +42,14 @@ const toggleNews = () => {
   }
 }
 
+watch(
+  () => route.fullPath,
+  () => {
+    isMenuOpen.value = false
+    openService.value = false
+    openNews.value = false
+  }
+)
 </script>
 
 <template>
@@ -238,8 +255,9 @@ const toggleNews = () => {
               @click="toggleNews"
               class="flex w-full items-center justify-between px-6 py-4"
             >
-              <span>Tin tức</span>
-
+              <NuxtLink to="/tin-tuc">
+                <span>Tin tức</span>
+              </NuxtLink>
               <span
                 class="transition-transform duration-300"
                 :class="{ 'rotate-45': openNews }"

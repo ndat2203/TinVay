@@ -11,7 +11,7 @@
       </h2>
 
       <h1
-        class="text-[40px] lg:text-[64px] font-bold leading-[70px] text-[#58595b]"
+        class="text-[40px] lg:text-[64px] font-bold leading-[44px] lg:leading-[70px] text-[#58595b]"
       >
         Thông báo mới nhất
       </h1>

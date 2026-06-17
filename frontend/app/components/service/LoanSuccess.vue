@@ -1,5 +1,5 @@
 <template>
-<section class="px-8 pb-24">
+<section class="px-4 py-[40px] md:px-8 md:pb-24">
   <div  v-if="successData">
     <div>
       <h2
@@ -32,8 +32,8 @@
           rounded-2xl p-6
           flex flex-col justify-between gap-6
 
-
-          lg:max-w-full
+          md:max-w-[45%] md:p-2
+          lg:max-w-full lg:p-6
         "
       >
         <p

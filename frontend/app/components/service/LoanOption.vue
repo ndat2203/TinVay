@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div id="business-sme-loan-service" class="flex flex-col items-center justify-center px-[16px] lg:px-8 pt-[40px] lg:pt-24 pb-[80px] lg:pb-[126px]">
+    <div id="business-sme-loan-service" class="flex flex-col items-center justify-center px-[16px] lg:px-8 py-[40px] lg:pt-24 lg:pb-[126px]">
       <h2 class="text-[40px] lg:text-[64px] font-bold leading-[70px] text-[#58595b]">
         Lựa chọn của bạn
       </h2>
@@ -97,20 +97,20 @@
                 Hướng dẫn truy cập
               </h4>
 
-              <div class="mt-2 flex gap-4">
-                <div class="flex-1">
+              <div class="flex justify-start mt-2 gap-4">
+                <div class="flex-1 min-w-0">
                   <ul>
                     <li
                       v-for="(value, index) in item.guide_content"
                       :key="index"
-                      class="list-none text-[16px] font-medium leading-6 text-[#596577]"
+                      class="list-none break-words text-[16px] font-medium leading-6 text-[#596577]"
                     >
                       {{ value }}
                     </li>
                   </ul>
                 </div>
 
-                <div class="flex flex-col items-center">
+                <div class="text-center shrink-0">
                   <img
                     src="/images/qr-viettel.svg"
                     alt="QR Viettel Money"

@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-const { data, pending, error } = await useAsyncData(
+const { data, pending: loading, error } = await useAsyncData(
   'home-posts',
   async () => {
     const [newsRes, noticeRes] = await Promise.all([

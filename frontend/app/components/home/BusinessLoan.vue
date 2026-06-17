@@ -62,9 +62,7 @@
           v-for="item in service.children"
           :key="item.id"
           :to="`/dich-vu/${service.slug}/${item.slug}`"
-          >
-            <div
-            class="
+          class="
               snap-start
               max-w-[90%] flex-shrink-0
               rounded-2xl bg-white p-6
@@ -73,6 +71,8 @@
               md:max-w-full
             "
           >
+            <div>
+        
             <div class="flex">
               <div class="flex-1">
                 <div class="text-base font-medium leading-6 text-slate-700">

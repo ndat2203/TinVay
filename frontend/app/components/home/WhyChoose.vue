@@ -54,7 +54,7 @@ const visibleMobileItems = computed(() => {
 <section class="px-[16px] py-[40px] lg:px-8 lg:py-[87px]">
   <!-- Header -->
   <div class="mb-14 text-center">
-    <p class="mb:[8px] lg:mb-4 text-lg font-semibold uppercase text-[rgb(187,32,46)]">
+    <p class="mb-[8px] lg:mb-4 text-lg font-semibold uppercase text-[rgb(187,32,46)]">
       {{ sectioninfo.subtitle }}
     </p>
 
