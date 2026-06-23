@@ -25,7 +25,7 @@
             md:text-[18px]
           "
         >
-          CHÀO MỪNG ĐẾN!
+          CHÀO MỪNG TỚI!
         </div>
 
         <h1
